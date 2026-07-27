@@ -21,7 +21,7 @@ core concepts
 8.prototype 
 9.prototype cahin
 10.closures 
-11. es6 features in javascript
+11.es6 features in javascript
   1.rest param
   2.spread oparator
   3.optional chaining
