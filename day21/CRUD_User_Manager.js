@@ -68,7 +68,7 @@ Check response.ok
 
 async function createUser() {
   try{
-    const response = await fectch("https://jsonplaceholder.typicode.com/users", {
+    const response = await fetch("https://jsonplaceholder.typicode.com/users", {
     method: "POST",
     headers: {
       "Content-Type": "application/json"
@@ -76,6 +76,9 @@ async function createUser() {
     body:
       JSON.stringify({
         name: "sakhlane",
+        email: "mohamed@example.com", 
+        
+        role: "Frontend Developer"
 
       })
   })
@@ -83,7 +86,7 @@ async function createUser() {
     if (!response.ok) {
       throw new Error("Failed to create user");
     }
-     const data = await response.JSON()
+     const data = await response.json()
      console.log(data)
   }
   catch(error){
@@ -92,3 +95,5 @@ async function createUser() {
 }
 
 createUser();
+
+// 2️⃣ READ — getUsers() 
