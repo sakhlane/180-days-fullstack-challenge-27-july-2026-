@@ -97,3 +97,111 @@ async function createUser() {
 createUser();
 
 // 2️⃣ READ — getUsers() 
+  async function getuUsers(){
+    try{
+      const response = await fetch("https://jsonplaceholder.typicode.com/users")
+       if(!response.ok){
+        throw new Error ("users not found")
+       }
+       const data = await response.json();
+       console.log(data);
+
+    }
+    catch(error){
+      console.log(error)
+    }
+  }
+
+  getuUsers();
+
+  // 3️⃣ UPDATE — updateUser()
+   
+  async function updateUser(){
+    try{
+      const response = await fetch("https://jsonplaceholder.typicode.com/users/1",{
+        method: "PATCH",
+        headers : {
+          "Content-Type": "application/json"
+        },
+        body: 
+          JSON.stringify({
+            name: "pasha"
+          })
+        
+      })
+      if(!response.ok){
+        throw new Error ("user not found")
+      }
+      const data = await response.json();
+      console.log(data)
+    }
+    catch(error){
+      console.log(error)
+    }
+  }
+
+updateUser()
+
+// 4️⃣ DELETE — deleteUser()
+
+async function deleteUser(){
+  try{
+      const response = await fetch("https://jsonplaceholder.typicode.com/users/1",{
+        method: "DELETE",
+     
+      })
+        if(!response.ok){
+          throw new Error("user not found")
+        }
+     
+      console.log("user delete successfull")
+  }
+  catch(error){
+    console.log(error)
+  }
+}
+
+deleteUser()
+
+// 5 put method
+async function updateUser() {
+    try {
+        const response = await fetch(
+            "https://jsonplaceholder.typicode.com/users/1",
+            {
+                method: "PUT",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    name: "Mohamed Pasha",
+                    username: "mohamed123",
+                    email: "mohamed@example.com"
+                })
+            }
+        );
+
+        if (!response.ok) {
+            throw new Error("Failed to update user");
+        }
+
+        const data = await response.json();
+
+        console.log(data);
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+updateUser()
+
+/**
+ * 
+ * 🧠 Remember this for interviews
+Method	   Purpose
+POST	     Create
+GET	       Read
+PUT	       Replace/update entire resource
+PATCH	     Partially update
+DELETE	   Delete
+ */
