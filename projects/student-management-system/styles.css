@@ -1,0 +1,167 @@
+/* RESET STYLES */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing : border-box;
+}
+/* WHOLE BODY */
+body{
+    font-family: Arial, Helvetica, sans-serif;
+      background: #f5f7fb;
+}
+/* WOHLE APP CONTAINER */
+.app-container{
+    display: flex;
+    min-height: 100vh;
+}
+/* ----------SIDEBAR STYLING---------  */
+.side-bar{
+    width: 260px;
+    height: 100vh;
+    background: #ffffff;
+    border-right:  1px solid #e5e7eb;
+
+    display: flex;
+    flex-direction: column;
+    
+    padding: 24px 18px;
+    overflow: hidden;
+}
+
+/* logo style */
+.logo{
+    display: flex;
+    align-items: center;
+    gap : 10px;
+    margin-bottom: 35px;
+}
+
+.logo img {
+    width: 42px;
+    height: 42px;
+    object-fit: contain;
+    
+    border : 1px solid black;
+}
+.logo h1{
+    font-size : 18px;
+    font-width: 700;
+}
+
+/* navigation style */
+.menu {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.menu a {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+
+    padding: 12px 14px;
+
+    text-decoration: none;
+    color: #64748b;
+
+    border-radius: 10px;
+
+    transition: 0.2s ease;
+}
+
+.menu a i {
+    width: 20px;
+    height: 20px;
+}
+
+.menu a span {
+    font-size: 15px;
+    font-weight: 500;
+}
+
+.menu a:hover {
+    background: #f1f5f9;
+    color: #2563eb;
+}
+
+/* illistration image  */
+.image{
+    margin-top: auto;
+    display: flex;
+    justify-content: center;
+    padding:15px 10px;
+}
+
+.image img {
+    width: 130px;
+    max-width: 100%;
+}
+
+/* profile container */
+.profile {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    padding: 12px;
+    margin-top: 10px;
+
+    border-top: 1px solid #e5e7eb;
+}
+
+/* profile image */
+.profile-image {
+    width: 40px;
+    height: 40px;
+    flex-shrink: 0;
+}
+
+.profile-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+/* profile information */
+.profile-info {
+    flex: 1;
+}
+
+.profile-info h3 {
+    font-size: 14px;
+    font-weight: 600;
+    color: #1e293b;
+}
+
+.profile-info p {
+    margin-top: 3px;
+    font-size: 12px;
+    color: #64748b;
+}
+
+/* logout button */
+.logout-btn {
+    border: none;
+    background: transparent;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 36px;
+    height: 36px;
+
+    border-radius: 8px;
+
+    color: #64748b;
+    cursor: pointer;
+
+    transition: 0.2s ease;
+}
+
+.logout-btn:hover {
+    background: #f1f5f9;
+    color: #ef4444;
+}
