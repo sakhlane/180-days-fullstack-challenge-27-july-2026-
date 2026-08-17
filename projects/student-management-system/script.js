@@ -52,12 +52,68 @@ console.log(studentCourse.options[1].textContent)
 console.log(studentCourse.options[1].value)
 console.log(studentCourse.options.value = "another course")
 
+// empty array to storing the students 
+ const students = [{name: 'sakhlane', rollNumber: '8989', email: 'sakhlane@gmail.com', course: '', phone: 'kdjfkjdkfj',}
+
+];
+
+//  get data from the form and display in ui 
 studentForm.addEventListener("submit", (event) => {
    event.preventDefault();
-   
-    console.log(studentName.value);
-    console.log(studentRollNumber.value);
-    console.log(studentEmail.value);
-    console.log(studentCourse.value);
-    console.log(studentPhoneNumber.value);
+    
+  //  create an object after the submission of form
+  const student ={
+    name : studentName.value,
+    rollNumber : studentRollNumber.value,
+    email : studentEmail.value,
+    course : studentCourse.value,
+    phone : studentPhoneNumber.value,
+    status : "Active"
+  }
+  students.push(student);
+  console.log(students) 
+
+displayData(students);
+
+// empty the input feilds after the submission
+studentName.value = "";
+studentRollNumber.value="";
+studentEmail.value = "";
+studentCourse.value = "";
+studentPhoneNumber.value = "";
+
+
 });
+
+  // display data on the ui
+  const studentsList = document.getElementById('student-list')
+  function displayData(students){
+  console.log(students)
+    // creating row using dom
+      // studentsList.innerHTML = ""
+    students.forEach((student)=>{
+      const row = document.createElement('tr');
+    row.innerHTML = `
+      <td>${student.name}</td>
+      <td>${student.rollNumber}</td>
+      <td>${student.email}</td>
+      <td>${student.course}</td>
+      <td>${student.phone}</td>
+      <td>${student.status}</td>
+      <td>
+    <button class="edit-btn">Edit</button>
+    <button class="delete-btn" data-roll = "${student.rollNumber}">Delete</button>
+      </td>
+    `
+        studentsList.appendChild(row);
+    })
+    
+}
+
+// event listener for delete functionality 
+studentsList.addEventListener("click",(event)=>{
+  event.preventDefault()
+  console.log(event.target.dataset.roll)
+  
+})
+
