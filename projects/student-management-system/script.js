@@ -53,7 +53,7 @@ console.log(studentCourse.options[1].value)
 console.log(studentCourse.options.value = "another course")
 
 // empty array to storing the students 
- const students = [{name: 'sakhlane', rollNumber: '8989', email: 'sakhlane@gmail.com', course: '', phone: 'kdjfkjdkfj',}
+ let students = [{name: 'sakhlane', rollNumber: '8989', email: 'sakhlane@gmail.com', course: '', phone: 'kdjfkjdkfj',}
 
 ];
 
@@ -90,7 +90,7 @@ studentPhoneNumber.value = "";
   function displayData(students){
   console.log(students)
     // creating row using dom
-      // studentsList.innerHTML = ""
+      studentsList.innerHTML = ""
     students.forEach((student)=>{
       const row = document.createElement('tr');
     row.innerHTML = `
@@ -101,7 +101,7 @@ studentPhoneNumber.value = "";
       <td>${student.phone}</td>
       <td>${student.status}</td>
       <td>
-    <button class="edit-btn">Edit</button>
+    <button class="edit-btn" data-roll = ${student.rollNumber}>Edit</button>
     <button class="delete-btn" data-roll = "${student.rollNumber}">Delete</button>
       </td>
     `
@@ -110,10 +110,57 @@ studentPhoneNumber.value = "";
     
 }
 
+// to find edit 
+let editingRoll = null;
 // event listener for delete functionality 
 studentsList.addEventListener("click",(event)=>{
   event.preventDefault()
+ 
+  // for delete functionality 
+  /*
   console.log(event.target.dataset.roll)
+  // get roll number for deleting student
+  const roll = event.target.dataset.roll;
+  // find the student which roll number is matched 
+  const updateStudents = 
+  students.filter((student)=>{
+   
+      return  student.rollNumber !== roll;
+      // console.log(students)
+    
+  })
+  console.log(updateStudents,"update students")
+  students = updateStudents;
+  console.log(students,"new student array");
+  displayData(students)
+
+  */
+
+  // edit functionality
+  const roll = event.target.dataset.roll;
+  editingRoll = roll;
+  console.log(roll);
+
+  const studentFind = students.find((student)=>{
+    return student.rollNumber === roll 
+  })
+  console.log(studentFind);
+
+    // Loading the student's data into the form.
+    studentName.value = studentFind.name;
+    studentRollNumber.value = studentFind.rollNumber;
+    studentEmail.value = studentFind.email;
+    studentCourse.value = studentFind.course;
+    studentPhoneNumber.value = studentFind.phone;
+
+    // check either add student or edit 
+    if(editingRoll === null){
+      // add student
+    }else {
+      // update the student
+      
+      studentFind.name = studentName.value;
+    }
   
 })
 
