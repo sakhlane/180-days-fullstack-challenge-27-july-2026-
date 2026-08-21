@@ -50,11 +50,13 @@ console.log(studentCourse.options);
 console.log(studentCourse.options);
 console.log(studentCourse.options[1].textContent)
 console.log(studentCourse.options[1].value)
-console.log(studentCourse.options.value = "another course")
+
 
 // empty array to storing the students 
  let students = []
 
+// edit student roll 
+let editingRoll = null;
 
 //  get data from the form and display in ui 
 studentForm.addEventListener("submit", (event) => {
@@ -69,7 +71,21 @@ studentForm.addEventListener("submit", (event) => {
     phone : studentPhoneNumber.value,
     status : "Active"
   }
-  students.push(student);
+  if(editingRoll === null){
+     students.push(student);
+  }else{
+    const updateStudent = students.find((stu)=>{
+      console.log(stu, "else block");
+
+      return stu.rollNumber === editingRoll ;
+    })
+     updateStudent.name = studentName.value;
+   updateStudent.rollNumber =   studentRollNumber.value;
+     updateStudent.email = studentEmail.value;
+   updateStudent.course = studentCourse.value  ;
+    updateStudent.phone = studentPhoneNumber.value ;
+  }
+  editingRoll = null;
   console.log(students) 
 
 displayData(students);
@@ -80,12 +96,11 @@ studentRollNumber.value="";
 studentEmail.value = "";
 studentCourse.value = "";
 studentPhoneNumber.value = "";
-
-
 });
 
   // display data on the ui
   const studentsList = document.getElementById('student-list')
+
   function displayData(students){
   console.log(students)
     // creating row using dom
@@ -108,7 +123,7 @@ studentPhoneNumber.value = "";
     })
     
 }
-
+ /** ####################################   comment for now to rewrite the code and understand 
 // to find edit 
 let editingRoll = null;
 // event listener for delete functionality 
@@ -133,7 +148,7 @@ studentsList.addEventListener("click",(event)=>{
   console.log(students,"new student array");
   displayData(students)
 
-  */
+  edit #############################################
 
   // edit functionality
   const roll = event.target.dataset.roll;
@@ -175,3 +190,45 @@ studentsList.addEventListener("click",(event)=>{
     
 })
 
+################################################### */
+
+// DELETE FUNCTIONALITY 
+  studentsList.addEventListener('click',(event)=>{
+    event.preventDefault();
+    const deleteBtn = event.target.classList.contains('delete-btn')
+    if(deleteBtn){
+      console.log('deleteBtn was clicked')
+      // select the student throgh roll number
+      const roll = event.target.dataset.roll;
+      console.log(roll)
+        // find the student which is matches and filter 
+    const updateStudents =   students.filter(student => 
+          student.rollNumber !== roll // creates new array withot roll
+       )
+       students = updateStudents;
+       displayData(students);
+    }
+  })
+// EDIT FUNCTIONALITY
+
+ studentsList.addEventListener('click',(event)=>{
+    event.preventDefault();
+    const editBtn = event.target.classList.contains('edit-btn')
+    if(editBtn){
+      console.log(' edit Btn was clicked')
+      // get rollnumber
+     const roll = event.target.dataset.roll;
+     const studentFind = students.find(stu => stu.rollNumber === roll )
+     console.log(studentFind);
+     console.log(roll);
+
+    //  after getting student put it property values into the form
+         studentName.value = studentFind.name;
+         studentRollNumber.value = studentFind.rollNumber;
+         studentEmail.value = studentFind.email;
+         studentCourse.value = studentFind.course;
+         studentPhoneNumber.value = studentFind.phone;
+
+         editingRoll = roll;
+    }
+ })
