@@ -53,9 +53,8 @@ console.log(studentCourse.options[1].value)
 console.log(studentCourse.options.value = "another course")
 
 // empty array to storing the students 
- let students = [{name: 'sakhlane', rollNumber: '8989', email: 'sakhlane@gmail.com', course: '', phone: 'kdjfkjdkfj',}
+ let students = []
 
-];
 
 //  get data from the form and display in ui 
 studentForm.addEventListener("submit", (event) => {
@@ -156,11 +155,23 @@ studentsList.addEventListener("click",(event)=>{
     // check either add student or edit 
     if(editingRoll === null){
       // add student
+      students.push(student)
     }else {
       // update the student
-      
+      // find student 
+     const studentFind = students.find((student)=>{
+    return student.rollNumber === roll 
+     })
       studentFind.name = studentName.value;
+      studentFind.rollNumber = studentRollNumber.value ;
+       studentFind.email = studentEmail.value;
+       studentFind.course = studentCourse.value;
+       studentFind.phone = studentPhoneNumber.value; 
+      console.log("update student clicked",studentFind.name)
     }
-  
+    
+    displayData(students)
+    editingRoll = null;
+    
 })
 
