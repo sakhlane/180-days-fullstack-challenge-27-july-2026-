@@ -98,12 +98,12 @@ studentCourse.value = "";
 studentPhoneNumber.value = "";
 });
 
-  // display data on the ui
+  // get table body from the table to display students data on the ui
   const studentsList = document.getElementById('student-list')
 
   function displayData(students){
   console.log(students)
-    // creating row using dom
+    // clear the old data form the table body
       studentsList.innerHTML = ""
     students.forEach((student)=>{
       const row = document.createElement('tr');
