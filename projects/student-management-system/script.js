@@ -79,6 +79,11 @@ studentForm.addEventListener("submit", (event) => {
 
       return stu.rollNumber === editingRoll;
     })
+    const doesStudentExist = students.some((updateStudent)=>{
+      if(updateStudent ){
+        console.log()
+      }
+    })
     updateStudent.name = studentName.value;
     updateStudent.rollNumber = studentRollNumber.value;
     updateStudent.email = studentEmail.value;
@@ -235,7 +240,7 @@ studentsList.addEventListener('click', (event) => {
 
 //  ========================================================================
 //  practice functionality and edge cases
-
+/*
 // SEARCH FUNCTIONALITY 
 const searchStudent = document.querySelector('#search-student')
 console.log(searchStudent);
@@ -245,9 +250,69 @@ searchStudent.addEventListener('input', (event) => {
   const searchVal = event.target.value;
   const findStudents = students.filter((student) => student.name.toLowerCase().includes(searchVal.toLowerCase()))
   console.log(findStudents);
-    if(findStudents.length === 0){
-      const studentsList = document.querySelector('.student-list')
-      
-    }
+
+    // SEARCH FUNCTIONALITY 
+const searchStudent = document.querySelector('#search-student')
+console.log(searchStudent);
+
+searchStudent.addEventListener('input', (event) => {
+  event.preventDefault();
+  const searchVal = event.target.value;
+  const findStudents = students.filter((student) => student.name.toLowerCase().includes(searchVal.toLowerCase()))
+  console.log(findStudents);
+    if (findStudents.length === 0) {
+      const studentsList = document.querySelector('#sudentd-list')
+      const tableRow = document.createElement('tr');
+      const tableData = document.createElement('td');
+
+      tableData.innerHTML = `<p>Student not Match</p>`;
+      tableRow.appendChild(tableData);
+      studentsList.appendChild(tableRow);
+} 
   displayData(findStudents)
 })
+  // display the filterd data
+  displayData(findStudents)
+    if (findStudents.length === 0) {
+      const studentsList = document.querySelector('#sudentd-list')
+      const tableRow = document.createElement('tr');
+      const tableData = document.createElement('td');
+
+      tableData.innerHTML = `<p>Student not Match</p>`;
+      tableRow.appendChild(tableData);
+      studentsList.appendChild(tableRow);
+} 
+  // displayData(findStudents)
+})
+*/
+
+// SEARCH FUNCTIONALITY
+
+const searchStudent = document.querySelector('#search-student');
+
+searchStudent.addEventListener('input', (event) => {
+
+  const searchVal = event.target.value;
+
+  const findStudents = students.filter((student) =>
+    student.name
+      .toLowerCase()
+      .includes(searchVal.toLowerCase())
+  );
+
+  // Display filtered students
+  displayData(findStudents);
+
+  // If no student is found
+  if (findStudents.length === 0) {
+
+    const tableRow = document.createElement('tr');
+    const tableData = document.createElement('td');
+
+    tableData.colSpan = 7;
+    tableData.innerHTML = `<p>Student not found</p>`;
+
+    tableRow.appendChild(tableData);
+    studentsList.appendChild(tableRow);
+  }
+});

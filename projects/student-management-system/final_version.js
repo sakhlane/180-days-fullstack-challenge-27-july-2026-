@@ -109,3 +109,34 @@ studentsList.addEventListener('click',(event)=>{
 }
 })
 
+//####################### FUNCTIONALITIES AND EDGE CASES ##########################
+
+// SEARCH FUCNTIONALITY 
+// get the search input 
+const searchStudent = document.querySelector('#search-student')
+
+// eventListener for the seach 
+searchStudent.addEventListener('input',(e)=>{
+    // get value from the search input 
+    const searchVal = e.target.value;
+    // filter all the matching students 
+    const matchStudents = students.filter(student => {
+     return    student.name
+        .toLowerCase()
+        .includes(searchVal.toLowerCase())
+    })
+
+    displayData(matchStudents);
+    
+    // if student does not match ( search with zero results. )
+    if(matchStudents.length === 0 ){
+        // get students list 
+        const tableRow = document.createElement('tr')
+        const tableData = document.createElement('td')
+
+        tableData.colSpan = 10;
+        tableData.innerHTML = `<h1>STUDENT NOT FOUND </h1>`
+        tableRow.appendChild(tableData);
+        studentsList.appendChild(tableRow);
+    }
+})
