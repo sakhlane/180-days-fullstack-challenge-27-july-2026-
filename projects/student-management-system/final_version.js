@@ -28,8 +28,27 @@ studentForm.addEventListener('submit', (event) => {
         status: "Active"
     }
     if(editingRoll === null){
+        // check duplicate roll number is roll number already exist
+        const doesStudentExist = students.some((stu)=>{
+            return stu.rollNumber === student.rollNumber;
+        })
+        if(doesStudentExist){
+            // console.log('Student Roll Number Already Exist');
+             // get students list 
+             studentsList.innerHTML = ""
+        const tableRow = document.createElement('tr')
+        const tableData = document.createElement('td')
+
+        tableData.colSpan = 10;
+        tableData.innerHTML = `<h1>STUDENT ROLL NUMBER ALREADY EXIST </h1>`
+        tableRow.appendChild(tableData);
+        studentsList.appendChild(tableRow);
+
+            return ;
+        }
         students.push(student);
     }else {
+        // update the sutdent 
         const findStudent = students.find(student => student.rollNumber === editingRoll)
        findStudent.name = studentName.value 
        findStudent.rollNumber = studentRollNumber.value 

@@ -72,18 +72,23 @@ studentForm.addEventListener("submit", (event) => {
     status: "Active"
   }
   if (editingRoll === null) {
+     const doesStudentExist = students.some((stu) => {
+        return stu.rollNumber === student.rollNumber;
+    });
+
+    if (doesStudentExist) {
+        console.log("Roll number already exists");
+        return;
+    }
     students.push(student);
   } else {
+    // update student 
     const updateStudent = students.find((stu) => {
       console.log(stu, "else block");
 
       return stu.rollNumber === editingRoll;
     })
-    const doesStudentExist = students.some((updateStudent)=>{
-      if(updateStudent ){
-        console.log()
-      }
-    })
+    
     updateStudent.name = studentName.value;
     updateStudent.rollNumber = studentRollNumber.value;
     updateStudent.email = studentEmail.value;
@@ -316,3 +321,83 @@ searchStudent.addEventListener('input', (event) => {
     studentsList.appendChild(tableRow);
   }
 });
+
+// ###########  practice methods ###########
+// some method 
+// --------------------------------------------------------------------------------
+/*
+Now let's practice 🔥
+
+Don't look for the answer online. Write the code yourself.
+
+Challenge 1 — some()
+const numbers = [12, 25, 7, 40, 18];
+
+Check whether at least one number is greater than 30. */
+
+const numbers = [12, 25, 7, 40, 18];
+let result = numbers.some((number)=>{
+  return number > 30
+})
+console.log(result) // true 
+
+/**
+ * Now do Challenge 2 yourself:
+
+const students = [
+    { name: "Ali", marks: 75 },
+    { name: "Ahmed", marks: 45 },
+    { name: "Sara", marks: 82 }
+];
+
+Use some() to check:
+
+Is there at least one student whose marks are below 50?
+ */
+
+const studentsP = [
+    { name: "Ali", marks: 75 },
+    { name: "Ahmed", marks: 45 },
+    { name: "Sara", marks: 82 }
+];
+
+const stuResult = studentsP.some((stu)=>{
+  return stu.marks < 50
+})
+console.log(stuResult)
+
+/**
+ * Now Challenge 3 — every() 🚀
+
+Use this array:
+
+const numbers = [10, 20, 30, 40];
+
+Use every() to check:
+
+Are all numbers greater than 5?
+ */
+
+const numbersEvery= [10, 20, 30, 40];
+
+const everyResult = numbersEvery.every((num)=>{
+  return num > 5;
+})
+console.log(everyResult);
+
+/**
+ * const students = [
+    { name: "Ali", marks: 75 },
+    { name: "Ahmed", marks: 45 },
+    { name: "Sara", marks: 82 }
+];
+
+Use every() to check:
+
+Does every student have marks above 40?
+ */
+
+const stuPevery = studentsP.every((stu)=>{
+  return stu.marks > 40
+})
+console.log(stuPevery);
