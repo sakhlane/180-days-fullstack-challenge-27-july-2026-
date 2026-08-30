@@ -12,7 +12,7 @@ const addStudentBtn = document.querySelector(".add-student-btn")
 // FOR STORING STUDENTS 
 let students = [];
 
-// FOR GET A STUDENT USING ROLL NUMBER
+// FOR CHECK A STUDENT USING ROLL NUMBER
 let editingRoll = null;
 
 // GET FORM INPUT VALUES FROM THE FORM USING SUBMIT EVENT
@@ -26,37 +26,42 @@ studentForm.addEventListener('submit', (event) => {
         course: studentCourse.value,
         phone: studentPhoneNumber.value,
         status: "Active"
+
     }
-    if(editingRoll === null){
-        // check duplicate roll number is roll number already exist
-        const doesStudentExist = students.some((stu)=>{
+    if (editingRoll === null) {
+        // check duplicate roll number is roll number already exist 
+        const doesStudentExist = students.some((stu) => {
             return stu.rollNumber === student.rollNumber;
         })
-        if(doesStudentExist){
+        if (doesStudentExist) {
             // console.log('Student Roll Number Already Exist');
-             // get students list 
-             studentsList.innerHTML = ""
-        const tableRow = document.createElement('tr')
-        const tableData = document.createElement('td')
+            // get students list 
+            studentsList.innerHTML = ""
+            const tableRow = document.createElement('tr')
+            const tableData = document.createElement('td')
 
-        tableData.colSpan = 10;
-        tableData.innerHTML = `<h1>STUDENT ROLL NUMBER ALREADY EXIST </h1>`
-        tableRow.appendChild(tableData);
-        studentsList.appendChild(tableRow);
+            tableData.colSpan = 10;
+            tableData.innerHTML = `<h1>STUDENT ROLL NUMBER ALREADY EXIST </h1>`
+            tableRow.appendChild(tableData);
+            studentsList.appendChild(tableRow);
 
-            return ;
+            return;
         }
         students.push(student);
-    }else {
+    } else {
         // update the sutdent 
         const findStudent = students.find(student => student.rollNumber === editingRoll)
-       findStudent.name = studentName.value 
-       findStudent.rollNumber = studentRollNumber.value 
-       findStudent.email =  studentEmail.value 
-       findStudent.course = studentCourse.value 
-       findStudent.phone =  studentPhoneNumber.value 
+        if(students.some((stu)=>stu.rollNumber === student.rollNumber && stu.rollNumber !== editingRoll)){
+            console.log('this roll number is already exist ')
+        }else {
+        findStudent.name = studentName.value
+        findStudent.rollNumber = studentRollNumber.value
+        findStudent.email = studentEmail.value
+        findStudent.course = studentCourse.value
+        findStudent.phone = studentPhoneNumber.value
+        }
     }
-        editingRoll = null // after update student editing roll should be null 
+    editingRoll = null // after update student editing roll should be null 
 
     // AFTER THE SUBMISSION OF STUDENTS DETAIL CLEAR THE INPUT FEILDS OF FORM
     studentName.value = "";
@@ -91,6 +96,7 @@ function displayData(students) {
       <td>
     <button class="edit-btn" data-roll = ${student.rollNumber}>Edit</button>
     <button class="delete-btn" data-roll = "${student.rollNumber}">Delete</button>
+   
       </td>
     `
         // display the row in the table body on ui
@@ -99,33 +105,36 @@ function displayData(students) {
 }
 
 // DELETE AND EDIT FUNCTIONALITY using EVENT DELEGATION 
-studentsList.addEventListener('click',(event)=>{
+studentsList.addEventListener('click', (event) => {
     event.preventDefault();
     // BUILD EDIT AND DELETE FUNCTIONALITY
     // target delete and edit bottons and roll number for a particular student
     const deleteBtn = event.target.classList.contains("delete-btn");
     const editBtn = event.target.classList.contains("edit-btn");
+   const activeBtn =  event.target.classList.contains("active-btn")
     const roll = event.target.dataset.roll;
-    
+
     // delete functionality
-    if(deleteBtn){
-    // remove the particular student and create new array list 
-    const updateStudents = students.filter( student => student.rollNumber !== roll )
-    students = updateStudents; // REASSAINING STUDENTS 
-    displayData(students);  //  RE-RENDER STUDENTS LIST 
+    if (deleteBtn) {
+        // remove the particular student and create new array list 
+        const updateStudents = students.filter(student => student.rollNumber !== roll)
+        students = updateStudents; // REASSAINING STUDENTS 
+        displayData(students);  //  RE-RENDER STUDENTS LIST 
+       
     }
-    if(editBtn){
-    //  find the particular student whos values is going to be edit
-    const findStudent = students.find(student => student.rollNumber === roll)
-    //  assaing the student data values to into a form 
-    studentName.value = findStudent.name;
-    studentRollNumber.value = findStudent.rollNumber;
-    studentEmail.value = findStudent.email;
-    studentCourse.value = findStudent.course;
-    studentPhoneNumber.value = findStudent.phone;
-    
-    editingRoll = roll; // RE ASSAINING ROLL NUMBER to edit the student  
-}
+    if (editBtn) {
+        //  find the particular student whos values is going to be edit
+        const findStudent = students.find(student => student.rollNumber === roll)
+        //  assaing the student data values to into a form 
+        studentName.value = findStudent.name;
+        studentRollNumber.value = findStudent.rollNumber;
+        studentEmail.value = findStudent.email;
+        studentCourse.value = findStudent.course;
+        studentPhoneNumber.value = findStudent.phone;
+
+        editingRoll = roll; // RE ASSAINING ROLL NUMBER to edit the student  
+    }
+   
 })
 
 //####################### FUNCTIONALITIES AND EDGE CASES ##########################
@@ -135,20 +144,20 @@ studentsList.addEventListener('click',(event)=>{
 const searchStudent = document.querySelector('#search-student')
 
 // eventListener for the seach 
-searchStudent.addEventListener('input',(e)=>{
+searchStudent.addEventListener('input', (e) => {
     // get value from the search input 
     const searchVal = e.target.value;
     // filter all the matching students 
     const matchStudents = students.filter(student => {
-     return    student.name
-        .toLowerCase()
-        .includes(searchVal.toLowerCase())
+        return student.name
+            .toLowerCase()
+            .includes(searchVal.toLowerCase())
     })
 
     displayData(matchStudents);
-    
+
     // if student does not match ( search with zero results. )
-    if(matchStudents.length === 0 ){
+    if (matchStudents.length === 0) {
         // get students list 
         const tableRow = document.createElement('tr')
         const tableData = document.createElement('td')
@@ -159,3 +168,4 @@ searchStudent.addEventListener('input',(e)=>{
         studentsList.appendChild(tableRow);
     }
 })
+
