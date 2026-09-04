@@ -401,3 +401,196 @@ const stuPevery = studentsP.every((stu)=>{
   return stu.marks > 40
 })
 console.log(stuPevery);
+
+const studentsPr = [
+  { name: "Ali", rollNumber: 101, isActive: true ,phone : 898389383939 },
+  { name: "Sara", rollNumber: 102, isActive: true ,phone : 898389383939 },
+  { name: "John", rollNumber: 103, isActive: false  ,phone : 898389383939}
+];
+
+// 👉 Task: Check whether at least one student is inactive.
+
+// check if any student is in active
+const isAnyInActive = studentsPr.some((stu) => stu.isActive === false) 
+
+// check is every student is active
+const isEveryActive = studentsPr.every ((stu)=> stu.isActive)
+
+function checkActiveOrInactive (){
+    const isActive = studentsPr.every((stu)=> stu.isActive)
+    if(!isActive){
+      console.log('some students are in active ')
+    }else {
+      console.log('all students are active ')
+    }
+}
+
+function checkActiveOrInactive (){
+    const isSomeInActive = studentsPr.some((stu)=> !stu.isActive)
+    if(isSomeInActive){
+      console.log('some students are in active ')
+    }else {
+      console.log('all students are active ')
+    }
+}
+
+const isEveryHavePhone = studentsPr.every((stu)=> stu.phone)
+const isAnyemptyphone = studentsPr.some((stu)=>stu.phone === "")
+const everystudenthascourse = students.every((stu) => stu.course);
+const somestudenthasNocourse = students.some((stu) => stu.course === "");
+
+
+students.some((stu)=> stu.rollNumber === "101")
+
+// Check whether all students have a unique roll number.
+
+// Hint: Think about how you could use some() to detect a duplicate.
+const uniqueRollnumber = students.some((stu)=> {
+    // stu.rollNumber === 101 ;
+    students.filter((number)=> { (stu.rollNumber === number.rollNumber).length > 1 ; console.log('duplicate exist')} )
+} )
+
+/**
+ * 
+ * Practice 1 — Duplicate names 🔥
+
+Given:
+
+const users = [
+  { name: "Ali", age: 20 },
+  { name: "Sara", age: 22 },
+  { name: "Ali", age: 25 }
+];
+
+👉 Check whether any duplicate name exists.
+
+Use:
+
+some()
+filter()
+.length > 1
+ */
+
+const users = [
+  { name: "Ali", age: 20 },
+  { name: "Sara", age: 22 },
+  { name: "Ali", age: 25 }
+];
+ 
+const duplicateNameExist = users.some((user) => {
+    return users.filter((person) => person.name === user.name).length > 1;
+    
+})
+
+/**
+ * Practice 2 🔥
+
+Now try this yourself:
+
+const products = [
+  { name: "Laptop", price: 50000 },
+  { name: "Phone", price: 20000 },
+  { name: "Laptop", price: 60000 }
+];
+
+👉 Check whether any duplicate product name exists using some() and filter().
+
+Write the complete code. 💪
+ */
+const products = [
+  { name: "Laptop", price: 50000 },
+  { name: "Phone", price: 20000 },
+  { name: "Laptop", price: 60000 }
+];
+const anyDuplicateProduct =  products.some((pro)=> {
+  return products.filter((product)=> pro.name === product.name) .length > 1 ;
+})
+
+/**
+ * const studentsCourse= [
+  { name: "Ali", course: "JavaScript" },
+  { name: "Sara", course: "React" },
+  { name: "John", course: "JavaScript" }
+];
+👉 Check whether any course is assigned to more than one student.
+
+Use:
+
+some()
+filter()
+.length > 1
+ */
+ const studentsCourse= [
+  { name: "Ali", course: "JavaScript" },
+  { name: "Sara", course: "React" },
+  { name: "John", course: "JavaScript" }
+];
+const checkAssaignCourseMorethanOne = studentsCourse.some((stu)=> {
+ return studentsCourse.filter((stuF)=> stuF.course === stu.course).length > 1 }
+)
+
+/**
+ * One more challenge — slightly harder
+
+Given:
+
+const students = [
+  { name: "Ali", course: "JavaScript", isActive: true },
+  { name: "Sara", course: "React", isActive: true },
+  { name: "John", course: "JavaScript", isActive: false },
+  { name: "Mike", course: "Python", isActive: true }
+];
+
+Task: Find out whether any course has more than one student AND at least one of those students is inactive.
+
+This will combine some(), filter(), and another condition.
+ */
+
+const studentsArr = [
+  { name: "Ali", course: "JavaScript", isActive: true },
+  { name: "Sara", course: "React", isActive: true },
+  { name: "John", course: "JavaScript", isActive: false },
+  { name: "Mike", course: "Python", isActive: true }
+];
+
+// ########### REGULAR EXPRESSION FOR FORM VALIDATION ######### 
+
+
+// RegEx (Regular Expression) is a pattern used to check whether text follows a particular format.
+
+const text = /hello/;
+console.log(text.test('hello'))
+
+// RegEx Step 2: ^ — Start of a string
+const text2 = /^hello/
+console.log(text2.test('am hello'))
+
+// RegEx Step 2.1: $ — end of a string
+const text3 = /hello$/
+console.log(text3.test('am hello')) // true 
+
+// 🔥 Next concept: character sets [].
+// RegEx Step 3: Character Sets [] => allow us to specify multiple possible characters.
+
+const pattern = /[abc]/;
+
+console.log(pattern.test("apple"));  // true
+console.log(pattern.test("banana")); // true
+console.log(pattern.test("cat"));    // true
+console.log(pattern.test("dog"));    // false
+
+// Next concept: ranges -
+
+/** 
+ * NOTES TILL NOW 
+ --------------------------------------------------
+  /hello/    → looks for "hello"
+  /^hello/   → "hello" must be at the start
+  /world$/   → "world" must be at the end
+  /[abc]/    → a OR b OR c
+  /[a-c]/    → a through c
+  /[0-9]/    → any digit from 0 through 9
+ */
+
+  // Next small concept: +
+  

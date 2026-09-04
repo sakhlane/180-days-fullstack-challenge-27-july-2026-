@@ -18,6 +18,29 @@ let editingRoll = null;
 // GET FORM INPUT VALUES FROM THE FORM USING SUBMIT EVENT
 studentForm.addEventListener('submit', (event) => {
     event.preventDefault();
+
+    // ##################### FORM VALIDATION #######################
+
+    // CHECK IF ANY FIELED IS EMPTY 
+    console.log(studentForm);
+    if (
+  studentName.value.trim() === "" ||
+  studentRollNumber.value.trim() === "" ||
+  studentEmail.value.trim() === "" ||
+  studentCourse.value.trim() === "" ||
+  studentPhoneNumber.value.trim() === ""
+) {
+   studentsList.innerHTML = ""
+            const tableRow = document.createElement('tr')
+            const tableData = document.createElement('td')
+
+            tableData.colSpan = 10;
+            tableData.innerHTML = `<h1>PLEASE FILL THE FORM </h1>`
+            tableRow.appendChild(tableData);
+            studentsList.appendChild(tableRow);
+
+  return;
+}
     // CREATE A SUDENT OBJECT TO STORE STUDENT DETAILS 
     const student = {
         name: studentName.value,
@@ -51,14 +74,24 @@ studentForm.addEventListener('submit', (event) => {
     } else {
         // update the sutdent 
         const findStudent = students.find(student => student.rollNumber === editingRoll)
-        if(students.some((stu)=>stu.rollNumber === student.rollNumber && stu.rollNumber !== editingRoll)){
-            console.log('this roll number is already exist ')
-        }else {
-        findStudent.name = studentName.value
-        findStudent.rollNumber = studentRollNumber.value
-        findStudent.email = studentEmail.value
-        findStudent.course = studentCourse.value
-        findStudent.phone = studentPhoneNumber.value
+        if (students.some((stu) => stu.rollNumber === student.rollNumber && stu.rollNumber !== editingRoll)) {
+            // console.log('this roll number is already exist ')
+             studentsList.innerHTML = ""
+            const tableRow = document.createElement('tr')
+            const tableData = document.createElement('td')
+
+            tableData.colSpan = 10;
+            tableData.innerHTML = `<h1> THIS STUDENT ROLL NUMBER ALREADY EXIST </h1>`
+            tableRow.appendChild(tableData);
+            studentsList.appendChild(tableRow);
+            return; 
+             
+        } else {
+            findStudent.name = studentName.value
+            findStudent.rollNumber = studentRollNumber.value
+            findStudent.email = studentEmail.value
+            findStudent.course = studentCourse.value
+            findStudent.phone = studentPhoneNumber.value
         }
     }
     editingRoll = null // after update student editing roll should be null 
@@ -96,7 +129,6 @@ function displayData(students) {
       <td>
     <button class="edit-btn" data-roll = ${student.rollNumber}>Edit</button>
     <button class="delete-btn" data-roll = "${student.rollNumber}">Delete</button>
-   
       </td>
     `
         // display the row in the table body on ui
@@ -111,7 +143,7 @@ studentsList.addEventListener('click', (event) => {
     // target delete and edit bottons and roll number for a particular student
     const deleteBtn = event.target.classList.contains("delete-btn");
     const editBtn = event.target.classList.contains("edit-btn");
-   const activeBtn =  event.target.classList.contains("active-btn")
+
     const roll = event.target.dataset.roll;
 
     // delete functionality
@@ -120,7 +152,7 @@ studentsList.addEventListener('click', (event) => {
         const updateStudents = students.filter(student => student.rollNumber !== roll)
         students = updateStudents; // REASSAINING STUDENTS 
         displayData(students);  //  RE-RENDER STUDENTS LIST 
-       
+
     }
     if (editBtn) {
         //  find the particular student whos values is going to be edit
@@ -134,7 +166,7 @@ studentsList.addEventListener('click', (event) => {
 
         editingRoll = roll; // RE ASSAINING ROLL NUMBER to edit the student  
     }
-   
+
 })
 
 //####################### FUNCTIONALITIES AND EDGE CASES ##########################
