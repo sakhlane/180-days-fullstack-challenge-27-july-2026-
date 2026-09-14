@@ -41,6 +41,23 @@ studentForm.addEventListener('submit', (event) => {
 
   return;
 }
+    // RegEx validations
+    // CHECK STUDENT NAME  
+    const studentNameRegEx = /^[a-zA-z ]+$/
+    if(!studentNameRegEx.test(studentName.value.trim())){
+        studentsList.innerHTML = "";
+
+        const tableRow = document.createElement("tr");
+        const tableData = document.createElement("td");
+
+        tableData.colSpan = 10;
+        tableData.innerHTML = `<h1>PLEASE ENTER A VALID NAME</h1>`;
+
+        tableRow.appendChild(tableData);
+        studentsList.appendChild(tableRow);
+        studentName.value = "";
+        return ;
+     }
     // CREATE A SUDENT OBJECT TO STORE STUDENT DETAILS 
     const student = {
         name: studentName.value,
