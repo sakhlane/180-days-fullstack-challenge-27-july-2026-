@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>student-management-system</title>
     <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="responsive.css">
     <!-- <script src="script.js" defer></script> -->
    <script src="final_version.js" defer></script>  
   </head>
@@ -15,7 +16,7 @@
       <!---------------------------- SIDE BAR ------------------------------------------------------>
       <aside class="side-bar">
         <div class="logo">
-          <img src="" alt="student management system logo" />
+          <img src="./assets/images/college-boy-holding-books-blurred-students-park-portrait-standing-35784759.webp" alt="student management system logo" />
           <h1>Student Management System</h1>
         </div>
         <nav class="menu">
@@ -35,9 +36,6 @@
           <img src="./assets/images/undraw_books_wxzz.svg" alt="Books Image" />
         </div>
         <div class="profile">
-          <div class="profile-image">
-            <img src="" alt="student profile image" />
-          </div>
           <div class="student-info">
             <h3>sakhlane</h3>
             <p>Administrator</p>
@@ -49,6 +47,10 @@
       </aside>
       <!-- MAIN CONTAINER -->
       <main class="main-container">
+        <!-- TOGGLE BUTTON  -->
+         <button class="sidebar-toggle" id="sidebar-toggle">
+           ☰
+          </button>
         <!-- HEADER SECTION -->
         <header class="min-header">
           <h1>Dashboard</h1>
@@ -115,7 +117,7 @@
             <div class="stat-icon">👨‍🎓</div>
             <div class="stat-info">
               <h3>Total Students</h3>
-              <p>120</p>
+              <p id="total-students"></p>
             </div>
           </div>
 
@@ -127,7 +129,7 @@
             </div>
           </div>
 
-          <div class="stat-card">
+          <!-- <div class="stat-card">
             <div class="stat-icon">🟢</div>
             <div class="stat-info">
               <h3>Active Students</h3>
@@ -141,7 +143,7 @@
               <h3>Inactive Students</h3>
               <p>15</p>
             </div>
-          </div>
+          </div> -->
         </section>
         <!-- STUDENTS -->
         <section class="students">

@@ -1,0 +1,413 @@
+/* =========================================================
+   PRODUCTION RESPONSIVE CSS
+   Student Management System
+   ========================================================= */
+
+
+/* =========================================================
+   LARGE TABLETS / SMALL LAPTOPS
+   1200px and below
+   ========================================================= */
+
+   #sidebar-toggle{
+       display: none;
+   }
+@media (max-width: 1200px) {
+  .main-container {
+    padding: 25px;
+  }
+
+  .side-bar {
+    width: 220px;
+  }
+
+  .student-form {
+    gap: 15px;
+  }
+
+  .form-group {
+    flex: 1 1 220px;
+  }
+
+}
+
+
+/* =========================================================
+   TABLETS
+   900px and below
+   ========================================================= */
+
+@media (max-width: 900px) {
+
+  .side-bar {
+    width: 200px;
+    padding: 18px;
+  }
+
+  .logo h1 {
+    font-size: 16px;
+  }
+
+  .main-container {
+    padding: 20px;
+  }
+
+  .min-header h1 {
+    font-size: 25px;
+  }
+
+
+  /* ---------- ADD STUDENT ---------- */
+
+  .add-students {
+    padding: 20px;
+  }
+
+  .student-form {
+    gap: 14px;
+  }
+
+  .form-group {
+    flex: 1 1 calc(50% - 14px);
+    min-width: 0;
+  }
+
+  .add-student-btn {
+    width: 100%;
+    margin-top: 5px;
+  }
+
+
+  /* ---------- STATISTICS ---------- */
+
+  .statistics {
+    gap: 15px;
+  }
+
+  .stat-card {
+    flex: 1 1 200px;
+  }
+
+
+  /* ---------- STUDENTS HEADER ---------- */
+
+  .students {
+    padding: 20px;
+  }
+
+  .students-header {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 15px;
+  }
+
+  .student-actions {
+    width: 100%;
+  }
+
+  .student-actions input,
+  .student-actions select {
+    flex: 1;
+    min-width: 0;
+  }
+
+}
+
+
+/* =========================================================
+   MOBILE
+   650px and below
+
+   SIDEBAR COMPLETELY HIDDEN
+   ========================================================= */
+
+@media (max-width: 650px) {
+
+  /* ---------- APP ---------- */
+
+  .app-container {
+    display: block;
+    min-height: 100vh;
+  }
+
+
+  /* ---------- SIDEBAR ---------- */
+
+  .side-bar {
+    display: none;
+  }
+
+
+  /* ---------- SIDEBAR TOGGLE ---------- */
+
+  .sidebar-toggle {
+    display: none;
+  }
+
+
+  /* ---------- MAIN ---------- */
+
+  .main-container {
+    width: 100%;
+    padding: 15px;
+  }
+
+
+  /* ---------- HEADER ---------- */
+
+  .min-header {
+    margin-bottom: 18px;
+  }
+
+  .min-header h1 {
+    font-size: 23px;
+  }
+
+  .min-header p {
+    font-size: 14px;
+  }
+
+
+  /* ---------- ADD STUDENT ---------- */
+
+  .add-students {
+    padding: 16px;
+    border-radius: 10px;
+    margin-bottom: 18px;
+  }
+
+  .add-student-title {
+    margin-bottom: 16px;
+  }
+
+  .add-student-title h2 {
+    font-size: 18px;
+  }
+
+  .student-form {
+    display: flex;
+    flex-direction: column;
+    gap: 13px;
+  }
+
+  .form-group {
+    width: 100%;
+    min-width: 0;
+    flex: none;
+  }
+
+  .form-group label {
+    font-size: 13px;
+    margin-bottom: 6px;
+  }
+
+  .form-group input,
+  .form-group select {
+    width: 100%;
+    min-height: 44px;
+    padding: 10px;
+  }
+
+  .add-student-btn {
+    width: 100%;
+    min-height: 44px;
+    margin-top: 3px;
+  }
+
+
+  /* ---------- STATISTICS ---------- */
+
+  .statistics {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 18px;
+  }
+
+  .stat-card {
+    width: 100%;
+    min-height: 80px;
+    padding: 16px;
+  }
+
+  .stat-icon {
+    font-size: 25px;
+  }
+
+  .stat-info h3 {
+    font-size: 13px;
+  }
+
+  .stat-info p {
+    font-size: 21px;
+  }
+
+
+  /* ---------- STUDENTS ---------- */
+
+  .students {
+    padding: 16px;
+    border-radius: 10px;
+  }
+
+  .students-header {
+    gap: 14px;
+    margin-bottom: 16px;
+  }
+
+  .students-header h2 {
+    font-size: 20px;
+  }
+
+  .students-header p {
+    font-size: 13px;
+  }
+
+
+  /* ---------- SEARCH + FILTER ---------- */
+
+  .student-actions {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 10px;
+  }
+
+  .student-actions input,
+  .student-actions select {
+    width: 100%;
+    min-height: 44px;
+  }
+
+
+  /* ---------- TABLE ---------- */
+
+  .students-table-container {
+    width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+
+    /*
+      Allows smooth scrolling on touch devices
+    */
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .students-table {
+    min-width: 750px;
+  }
+
+  .students-table th,
+  .students-table td {
+    padding: 11px 9px;
+    font-size: 13px;
+  }
+
+  .edit-btn,
+  .delete-btn {
+    min-height: 34px;
+    padding: 6px 9px;
+  }
+
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+   480px and below
+   ========================================================= */
+
+@media (max-width: 480px) {
+
+  .main-container {
+    padding: 10px;
+  }
+
+
+  /* ---------- HEADER ---------- */
+
+  .min-header h1 {
+    font-size: 21px;
+  }
+
+  .min-header p {
+    font-size: 13px;
+  }
+
+
+  /* ---------- ADD STUDENT ---------- */
+
+  .add-students {
+    padding: 14px;
+  }
+
+  .add-student-title h2 {
+    font-size: 17px;
+  }
+
+
+  /* ---------- STUDENTS ---------- */
+
+  .students {
+    padding: 14px;
+  }
+
+  .students-header h2 {
+    font-size: 19px;
+  }
+
+  .students-header p {
+    font-size: 12px;
+  }
+
+
+  /* ---------- TABLE ---------- */
+
+  .students-table {
+    min-width: 700px;
+  }
+
+  .students-table th,
+  .students-table td {
+    padding: 10px 8px;
+    font-size: 12px;
+  }
+
+  .edit-btn,
+  .delete-btn {
+    padding: 6px 8px;
+    font-size: 12px;
+  }
+
+}
+
+
+/* =========================================================
+   VERY SMALL DEVICES
+   360px and below
+   ========================================================= */
+
+@media (max-width: 360px) {
+
+  .main-container {
+    padding: 8px;
+  }
+
+  .add-students,
+  .students {
+    padding: 12px;
+  }
+
+  .min-header h1 {
+    font-size: 20px;
+  }
+
+  .add-student-title h2 {
+    font-size: 16px;
+  }
+
+  .students-header h2 {
+    font-size: 18px;
+  }
+
+}

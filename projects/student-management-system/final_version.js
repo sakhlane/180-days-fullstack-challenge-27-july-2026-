@@ -8,9 +8,14 @@ const studentEmail = document.querySelector("#email")
 const studentCourse = document.querySelector("#course")
 const studentPhoneNumber = document.querySelector("#phone")
 const addStudentBtn = document.querySelector(".add-student-btn")
+const totalStudents = document.querySelector("#total-students");
 
 // FOR STORING STUDENTS 
 let students = [];
+function updateStudentsCount(){
+    totalStudents.textContent = students.length;
+    return ;
+}
 
 // FOR CHECK A STUDENT USING ROLL NUMBER
 let editingRoll = null;
@@ -58,6 +63,27 @@ studentForm.addEventListener('submit', (event) => {
         studentName.value = "";
         return ;
      }
+     // regex for phone number
+     const phoneNumberRegEx = /^[0-9]{10}$/
+     if(!phoneNumberRegEx.test(studentPhoneNumber.value)){
+        alert ('enter a valid phone number');
+        return ;
+     }
+    //  regex for roll nunmber
+    const rollNumberRegEx = /^[0-9]+$/;
+
+    if (!rollNumberRegEx.test(studentRollNumber.value.trim())) {
+    alert("Please enter a valid roll number");
+    return;
+    }
+
+    // regex for email 
+    const emailRegEx = /^[a-zA-Z0-9_%+-]+@[a-zA-Z]+\.[a-zA-Z]{2,}$/
+    if(!emailRegEx.test(studentEmail.value.trim())){
+        alert('please enter a valid email adress');
+        return ;
+    }
+
     // CREATE A SUDENT OBJECT TO STORE STUDENT DETAILS 
     const student = {
         name: studentName.value,
@@ -88,6 +114,7 @@ studentForm.addEventListener('submit', (event) => {
             return;
         }
         students.push(student);
+        updateStudentsCount();
     } else {
         // update the sutdent 
         const findStudent = students.find(student => student.rollNumber === editingRoll)
@@ -121,9 +148,11 @@ studentForm.addEventListener('submit', (event) => {
     studentPhoneNumber.value = "";
 
     // CALL THE DISPLAYDATA () TO DISPLAY THE DATA ON UI
-    displayData(students)
+    displayData(students);
 
 })
+
+
 
 // DISPLAY DATA ON UI
 
@@ -169,6 +198,7 @@ studentsList.addEventListener('click', (event) => {
         const updateStudents = students.filter(student => student.rollNumber !== roll)
         students = updateStudents; // REASSAINING STUDENTS 
         displayData(students);  //  RE-RENDER STUDENTS LIST 
+        updateStudentsCount();
 
     }
     if (editBtn) {
@@ -217,4 +247,6 @@ searchStudent.addEventListener('input', (e) => {
         studentsList.appendChild(tableRow);
     }
 })
+
+
 
