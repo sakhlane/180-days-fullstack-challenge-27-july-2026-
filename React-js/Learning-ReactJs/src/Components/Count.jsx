@@ -65,18 +65,38 @@ Display the count in an <h1>
 
 // USING ARROW FUNCTION
 
-function Count() {
-  const [count, setCount] = useState(0);
+// function Count() {
+//   const [count, setCount] = useState(0);
 
-  function changeCount(val) {
-    setCount((preVal) => preVal + val);
-  }
-  return (
+//   function changeCount(val) {
+//     setCount((preVal) => preVal + val);
+//   }
+//   return (
+//     <>
+//       <h1>{count}</h1>
+//       <button onClick= {()=>changeCount (1)} className="increaseBtn">Increase</button>
+//       <button onClick={()=>changeCount (-1)} className="decreaseBtn">Decrease</button>
+//     </>
+//   );
+// }
+// export default Count;
+
+
+function Count(){
+const  [count ,setCount] = useState(0)
+
+      function handleChange(val){
+
+        setCount((preVal)=> preVal + val )
+      }
+
+  return( 
     <>
       <h1>{count}</h1>
-      <button onClick= {()=>changeCount (1)} className="increaseBtn">Increase</button>
-      <button onClick={()=>changeCount (-1)} className="decreaseBtn">Decrease</button>
+      <button className="increseBtn" onClick={()=>handleChange(+1)}>Increse</button>
+      <button className="decreaseBtn"  onClick={()=>handleChange(-1)}>Decrease</button>
     </>
-  );
+  )
 }
+
 export default Count;

@@ -7,6 +7,8 @@ import './App.css'
 import Doctor from './Doctor.jsx'
 import Patient from "./Patient.jsx"
 import Count from "./Components/Count.jsx"
+import ShowHide from './Components/ShowHide.jsx'
+import LikeBtn from './Components/LikeBtn.jsx'
 
 function App() {
   function handleClick (){
@@ -23,7 +25,9 @@ return (
       <Patient name="Aisha" age={28} course="HTML/CSS" /> */}
 
       {/* ---------- day 2 of react js props and useState hook------ */}
-        <Count />
+        {/* <Count /> */}
+        {/* <ShowHide /> */}
+        <LikeBtn />
     </>
   )
 }
