@@ -20,28 +20,61 @@ function ControlledForm(){
         email : ""
     })
 
+    // HANDLE ERRORS
+    const [errors, setErrors] = useState({});
+
+    function validateForm(){
+        const newErrors = {};
+        if(formData.name.trim() === ""){
+            newErrors.name ="Nmae is required"
+        }
+        if(formData.phone.trim() === ""){
+            newErrors.phone = "Phone number is requrired"
+        }
+        if(formData.email.trim()===""){
+            newErrors.email = "Email is required"
+        }
+
+        setErrors(newErrors);
+        return  Object.keys(newErrors).length === 0;
+    }
      function handleChange(event){
         const {name , value} = event.target
         setFormData({
             ...formData,
             [name] : value
          }) 
+         console.log(name,value)
      }
 
      function handleSubmit(e){
         e.preventDefault();
 
-        console.log('form submitted')
+        if(validateForm()){
+            
+            console.log('form submitted')
+           
+            setFormData({
+                 name: "",
+                phone: "",
+                email: ""
+            })
+        }
+
      }
 
     return (<>
         <form action="" onSubmit={handleSubmit}>
             <label htmlFor="">Name :</label>
-            <input type="tex" value={formData.name}  onChange={(e)=> handleChange(e.target.value)} /> <br />
+            <input type="text" name="name" value={formData.name}  onChange={ handleChange} /> <br />
              <label htmlFor=""> Phone :</label>
-            <input type="text" value={formData.phone} onChange={(e)=> handleChange(e.target.value)} /> <br />
+            <input type="text" name = "phone" value={formData.phone} onChange={ handleChange} /> <br />
               <label htmlFor=""> Email :</label>
-            <input type="email" value={formData.email} onChange={(e)=> handleChange(e.target.value)} /> <br />
+            <input type="email" name="email" value={formData.email} onChange={ handleChange} /> <br />
+           
+           <p>Name: {formData.name}</p>
+            <p>Phone: {formData.phone}</p>
+            <p>Email: {formData.email}</p>
             <button type="submit">submit</button>
         </form>
     </>)
