@@ -9,8 +9,9 @@ import Patient from "./Patient.jsx"
 import Count from "./Components/Count.jsx"
 import ShowHide from './Components/ShowHide.jsx'
 // import LikeBtn from './Components/LikeBtn.jsx'
-import ControlledForm from './Components/ControlledForm.jsx'
-
+// import ControlledForm from './Components/ControlledForm.jsx'
+import CounterWithuseEffect from './Components/day 6 of react/CounterWithuseEffect.jsx'
+import Clock from './Components/day 6 of react/Clock.jsx'
 function App() {
   function handleClick (){
     console.log('button was clicked ')
@@ -29,7 +30,9 @@ return (
         {/* <Count /> */}
         {/* <ShowHide /> */}
         {/* <LikeBtn /> */}
-        <ControlledForm/>
+        {/* <ControlledForm/> */}
+        {/* <CounterWithuseEffect/> */}
+        <Clock />
     </>
   )
 }
