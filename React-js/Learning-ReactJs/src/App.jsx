@@ -4,6 +4,8 @@ import reactLogo from './assets/react.svg'
 import viteLogo from './assets/vite.svg'
 import './App.css'
 
+// ------------------------------------------------------------
+
 import Doctor from './Doctor.jsx'
 import Patient from "./Patient.jsx"
 import Count from "./Components/Count.jsx"
@@ -11,7 +13,9 @@ import ShowHide from './Components/ShowHide.jsx'
 // import LikeBtn from './Components/LikeBtn.jsx'
 // import ControlledForm from './Components/ControlledForm.jsx'
 import CounterWithuseEffect from './Components/day 6 of react/CounterWithuseEffect.jsx'
-import Clock from './Components/day 6 of react/Clock.jsx'
+// import Clock from './Components/day 6 of react/Clock.jsx'
+import CharacterCounter from './Components/day 6 of react/CharacterCounter.jsx'
+import GetUsers from './Components/day 7 of react ( useEffect )/GetUsers.jsx'
 function App() {
   function handleClick (){
     console.log('button was clicked ')
@@ -32,7 +36,9 @@ return (
         {/* <LikeBtn /> */}
         {/* <ControlledForm/> */}
         {/* <CounterWithuseEffect/> */}
-        <Clock />
+        {/* <Clock /> */}
+        {/* <CharacterCounter/> */}
+        <GetUsers/>
     </>
   )
 }
