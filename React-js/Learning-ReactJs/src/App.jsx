@@ -16,6 +16,12 @@ import CounterWithuseEffect from './Components/day 6 of react/CounterWithuseEffe
 // import Clock from './Components/day 6 of react/Clock.jsx'
 import CharacterCounter from './Components/day 6 of react/CharacterCounter.jsx'
 import GetUsers from './Components/day 7 of react ( useEffect )/GetUsers.jsx'
+import InputFocus from './Components/day 8 of react ( useRef )/InputFocus.jsx'
+import RefCounter from './Components/day 8 of react ( useRef )/RefCounter.jsx'
+import AddmissionForm from './Components/day 8 of react ( useRef )/AddmissionForm.jsx'
+import PreviousName from './Components/day 8 of react ( useRef )/PreviousName.jsx'
+
+
 function App() {
   function handleClick (){
     console.log('button was clicked ')
@@ -38,7 +44,11 @@ return (
         {/* <CounterWithuseEffect/> */}
         {/* <Clock /> */}
         {/* <CharacterCounter/> */}
-        <GetUsers/>
+        {/* <GetUsers/> */}
+        {/* <InputFocus/> */}
+        {/* <RefCounter/> */}
+        {/* <AddmissionForm/> */}
+        <PreviousName/>
     </>
   )
 }

@@ -5,6 +5,7 @@ import { useState, useEffect } from 'react';
 function GetUsers() {
     const [user, setUser] = useState([]);
     const [loading, setLoading] = useState(true);
+    const [error, setError] = useState("");
 
     useEffect(() => {
         async function getUsers() {
@@ -35,8 +36,8 @@ function GetUsers() {
             <h1>USER DATA</h1>
 
             {loading && <p>Users Data Loading...</p>}
-
-            {!loading && user.map((item) => (
+            {error && <p>{error}</p>}
+            {!loading && !error && user.map((item) => (
                 <div key={item.id}>
                     <h2>Name: {item.name}</h2>
                     <h2>Email: {item.email}</h2>
