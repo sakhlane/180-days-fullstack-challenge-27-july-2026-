@@ -20,7 +20,7 @@ import InputFocus from './Components/day 8 of react ( useRef )/InputFocus.jsx'
 import RefCounter from './Components/day 8 of react ( useRef )/RefCounter.jsx'
 import AddmissionForm from './Components/day 8 of react ( useRef )/AddmissionForm.jsx'
 import PreviousName from './Components/day 8 of react ( useRef )/PreviousName.jsx'
-
+import StopWatch from './Components/day 10 of react ( stop-watch  project )/StopWatch.jsx'
 
 function App() {
   function handleClick (){
@@ -48,7 +48,8 @@ return (
         {/* <InputFocus/> */}
         {/* <RefCounter/> */}
         {/* <AddmissionForm/> */}
-        <PreviousName/>
+        {/* <PreviousName/> */}
+        <StopWatch/>
     </>
   )
 }
